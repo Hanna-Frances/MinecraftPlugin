@@ -1,0 +1,8 @@
+main: gate.Main
+name: Fence Gate
+version: 1.0
+description: nothing yet
+authors: [idiot_1, idiot_2]
+prefix: Gates
+commands:
+permissions:
