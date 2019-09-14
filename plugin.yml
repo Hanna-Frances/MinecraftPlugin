@@ -1,8 +1,12 @@
 main: gate.Main
-name: Fence Gate
+name: FenceGate
 version: 1.0
 description: nothing yet
 authors: [idiot_1, idiot_2]
 prefix: Gates
 commands:
+    gate: 
+        aliases: g
+        description: A simple description.
+        usage: "Don't bother"
 permissions:
