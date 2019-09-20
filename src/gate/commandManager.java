@@ -13,6 +13,10 @@ import org.bukkit.entity.Player;
 
 public class commandManager implements TabExecutor {
 
+    /*
+    This method is for tab complete 
+    */
+    
     @Override
     public List<String> onTabComplete(CommandSender cs, Command cmnd, String string, String[] strings) {
        
@@ -36,6 +40,15 @@ public class commandManager implements TabExecutor {
                     }
                     return deleteName;
                 }
+                else if(strings[0].equalsIgnoreCase("create")){
+                    
+                    return new ArrayList<>();
+                }
+            }
+            else if(strings.length == 3){
+                if(strings[0].equalsIgnoreCase("create")){
+                    return colourChoices.returnList();
+                }
             }
         }
         
@@ -53,7 +66,7 @@ public class commandManager implements TabExecutor {
             if (strings.length > 0){
                 if(strings[0].equalsIgnoreCase("create")){
                     if(strings.length == 9){
-                        Material mat = Material.getMaterial(strings[2]);
+                        Material mat = colourChoices.getMaterialFromColour(strings[2]);//convert String to material
                         if(mat != null){
                            Integer x1 = Integer.getInteger(strings[3]);
                            Integer y1 = Integer.getInteger(strings[4]);
