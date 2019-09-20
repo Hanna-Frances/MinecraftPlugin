@@ -68,23 +68,29 @@ public class commandManager implements TabExecutor {
                     if(strings.length == 9){
                         Material mat = colourChoices.getMaterialFromColour(strings[2]);//convert String to material
                         if(mat != null){
-                           Integer x1 = Integer.getInteger(strings[3]);
-                           Integer y1 = Integer.getInteger(strings[4]);
-                           Integer z1 = Integer.getInteger(strings[5]);
-                           Integer x2 = Integer.getInteger(strings[6]);
-                           Integer y2 = Integer.getInteger(strings[7]);
-                           Integer z2 = Integer.getInteger(strings[8]);
-                           
-                           if(x1 != null && y1 != null && z1 != null && x2 != null && y2 != null && z2 != null){
+                            int x1 = 0, y1 = 0, z1 = 0, x2 = 0, y2 = 0, z2 = 0;
+                            
+                            try{
+                            x1 = Integer.parseInt(strings[3]);
+                            y1 = Integer.parseInt(strings[4]);
+                            z1 = Integer.parseInt(strings[5]);
+                            x2 = Integer.parseInt(strings[6]);
+                            y2 = Integer.parseInt(strings[7]);
+                            z2 = Integer.parseInt(strings[8]);
+                           }catch(Exception e){
+                                cs.sendMessage("bad coords");
+                                return true;
+                           }
+                           //if((x1 != null) && (y1 != null) && (z1 != null) && (x2 != null) && (y2 != null) && (z2 != null)){
                                Gate.gates.put(strings[1], new Gate(new BlockVector(getSmall(x1, x2), getSmall(y1, y2), getSmall(z1, z2)), new BlockVector(getBig(x1, x2), getBig(y1, y2), getBig(z1, z2)), mat, ((Player)cs).getWorld(), strings[1]));
                                cs.sendMessage("Coordinates were done successfully.");
                                return true;
-                           }
+                           /*}
                            else{
                                 cs.sendMessage("bad coords");
                                 //badMessage(cs);
                                 return true;
-                           }
+                           }*/
                         }
                         else{
                             cs.sendMessage("bad material");
