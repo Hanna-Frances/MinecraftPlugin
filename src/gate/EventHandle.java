@@ -12,6 +12,11 @@ public class EventHandle implements Listener{
     
     @EventHandler
     public void onRightClick(PlayerInteractEvent event){
+        
+        if(event == null || event.getClickedBlock() == null || event.getPlayer() == null){
+            return;
+        }
+        
         Player steve = event.getPlayer();
         
         if(event.getClickedBlock().getBlockData() instanceof org.bukkit.block.data.type.Sign || event.getClickedBlock().getBlockData() instanceof WallSign){

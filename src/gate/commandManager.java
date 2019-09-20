@@ -81,17 +81,20 @@ public class commandManager implements TabExecutor {
                                return true;
                            }
                            else{
-                                badMessage(cs);
+                                cs.sendMessage("bad coords");
+                                //badMessage(cs);
                                 return true;
                            }
                         }
                         else{
-                            badMessage(cs);
+                            cs.sendMessage("bad material");
+                            //badMessage(cs);
                             return true;
                         }
                     }
                     else{
-                        badMessage(cs);
+                        //badMessage(cs);
+                        cs.sendMessage("bad length");
                         return true;
                     }
                 }
