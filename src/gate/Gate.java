@@ -24,6 +24,10 @@ public class Gate {
         return coords;
     }
     
+    protected Location getCoordsLocation(){
+        return new Location(world, coords.getX(), coords.getY(), coords.getZ());
+    }
+    
     protected BlockVector getCoords2(){
         return coords2;
     }

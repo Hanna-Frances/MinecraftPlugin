@@ -8,6 +8,7 @@ import org.bukkit.entity.*;
 
 public class ConfigManager {
     
+    //list of final Strings to name the files.
     public static final String CONFIGFILENAME = "gates.yml";
     public static final String CONFIGFILENAME_BROKEN = "gates_broken.yml";
     public static final String CONFIGFILENAME_OLD = "gates_old.yml";
@@ -15,6 +16,10 @@ public class ConfigManager {
     public FileConfiguration gateCFG;//CFG = configuration
     public File gateFile;
     
+    /*
+    * SetupFile
+    * Makes new files if files to store gate plugin info does not exist.
+    */
     public void SetupFile(){
         if(!Main.plugin.getDataFolder().exists()){//checks if folders exist, otherwise make a new folder to store files.
             Main.plugin.getDataFolder().mkdir();
@@ -41,6 +46,10 @@ public class ConfigManager {
         }
     }//end of SetupFile
     
+    /*
+    * resetConfig
+    * Makes new files if old files were found but broken.
+    */
     public void resetConfig(boolean broken){
         if(broken){
             Bukkit.getServer().getConsoleSender().sendMessage(CONFIGFILENAME + " is broken, making new files. Old files will be marked broken.");
@@ -92,7 +101,10 @@ public class ConfigManager {
     }//end of resetConfig
     
     
-    
+    /*
+    * saveConfig
+    * saves files, if cannot be saved then an error message is sent
+    */
     public void saveConfig(){
         
         try{
@@ -101,7 +113,7 @@ public class ConfigManager {
             Main.plugin.getLogger().warning("File cannot be saved.");
         }
         
-    }//end of saveCOnfig
+    }//end of saveConfig
     
     public void reloadConfig(){
         //tests if gate.ymls exists
@@ -124,6 +136,6 @@ public class ConfigManager {
             }
             Bukkit.getServer().getConsoleSender().sendMessage(CONFIGFILENAME + " has been loaded!");
         }
-    }
+    }//end of reloadConfig
     
-}
+}//end of class

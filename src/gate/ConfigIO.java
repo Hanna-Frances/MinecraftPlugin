@@ -25,6 +25,10 @@ public class ConfigIO {
         CFG = manager.gateCFG;
     }
     
+    /*
+    * setGate
+    * Fills in the info of the gate.
+    */
     public void setGate(Gate g){
         CFG.set(g.getName() + TYPE, colourChoices.getColourFromMaterial(g.getMaterial()));//setting TYPE to the material translated to the colour
         CFG.set(g.getName() + COORD1 + X, g.getCoords().getBlockX());
@@ -36,6 +40,10 @@ public class ConfigIO {
         CFG.set(g.getName() + WORLD, g.getWorld().getUID().toString());
     }
     
+    /*
+    * getGate
+    * returns the gate information
+    */
     public Gate getGate(String name){
         String type = CFG.getString(name + TYPE);
         int coord1x = CFG.getInt(name + COORD1 + X);
@@ -54,11 +62,21 @@ public class ConfigIO {
         return new Gate(c1, c2, m, w, name);
     }
     
+    public void removeGate(String name){
+        CFG.set(name, null);
+    }
+    
     public List<String> getAll(){
         return CFG.getStringList("");
     }
     
     public void save(){
         manager.saveConfig();
+    }
+    
+    public void initialize(){
+        for(String name : getAll()){
+            Gate.gates.put(name, getGate(name));
+        }
     }
 }

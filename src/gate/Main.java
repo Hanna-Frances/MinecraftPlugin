@@ -8,7 +8,7 @@ public class Main extends JavaPlugin{
         public static Main plugin;
     
 	private commandManager cmdManager;
-        private ConfigIO config;
+        protected ConfigIO config;
         
     @Override
     public void onEnable(){
@@ -19,14 +19,23 @@ public class Main extends JavaPlugin{
         cmdManager = new commandManager();
         config = new ConfigIO(new ConfigManager());
         
+        config.initialize();
+        
         getCommand("gate").setExecutor(cmdManager);
         getCommand("gate").setTabCompleter(cmdManager);
         
         getServer().getPluginManager().registerEvents(new EventHandle(), this);
-    }
+    }//end of onEnable
     
     @Override
     public void onDisable(){
         config.save();
     }
+    
+    
+    public void saveConfig(){
+        for(String key : Gate.gates.keySet()){
+            config.setGate(Gate.gates.get(key));
+        }
+    }//end of saveConfig
 }

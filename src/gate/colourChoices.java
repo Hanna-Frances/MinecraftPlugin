@@ -1,4 +1,7 @@
-
+/*
+* emum colourChoices
+* emum so that you can coorespond the string to its appropriate material.
+*/
 package gate;
 
 import java.util.*;
@@ -53,7 +56,7 @@ public enum colourChoices {
             
             return LIST.get(0).getMaterial();//default to oak fence if they dont know how to spell
             
-        }
+        }//end of getMaterialFromColour
         
         public static List<String> returnList(){
             ArrayList<String> l = new ArrayList<>();
@@ -63,7 +66,7 @@ public enum colourChoices {
             }
             
             return l;
-        }
+        }//end of returnList
         
         public static String getColourFromMaterial(Material m){
             
@@ -78,6 +81,6 @@ public enum colourChoices {
             }
             
             return LIST.get(0).toString();//default to oak fence if they dont know how to spell
-        }
+        }//end of getColourFromMaterial
         
-}
+}//end of class
