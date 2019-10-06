@@ -20,8 +20,8 @@ public class ConfigIO {
     private static final String Z = ".z";
     
     public ConfigIO(ConfigManager m){
-        
         manager = m;
+        manager.SetupFile();
         CFG = manager.gateCFG;
     }
     
@@ -38,6 +38,7 @@ public class ConfigIO {
         CFG.set(g.getName() + COORD2 + Y, g.getCoords2().getBlockY());
         CFG.set(g.getName() + COORD2 + Z, g.getCoords2().getBlockZ());
         CFG.set(g.getName() + WORLD, g.getWorld().getUID().toString());
+        save();
     }
     
     /*

@@ -37,13 +37,17 @@ public class ConfigManager {
                 return;
             }
             //yml file creation
-            try{
-                gateCFG = YamlConfiguration.loadConfiguration(gateFile);
-            }catch (Exception e){
-                resetConfig(true);//make them method!!
-            }
-            Bukkit.getServer().getConsoleSender().sendMessage(CONFIGFILENAME + " has been loaded!");
-        }
+           
+        }//if ends
+        
+		try {
+			gateCFG = YamlConfiguration.loadConfiguration(gateFile);
+		} catch (Exception e) {
+			resetConfig(true);// make them method!!
+		}
+		
+		Bukkit.getServer().getConsoleSender().sendMessage(CONFIGFILENAME + " has been loaded!");
+        
     }//end of SetupFile
     
     /*
